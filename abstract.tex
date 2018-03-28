@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper,notitlepage,english]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+
+\usepackage{fullpage}
+
+\begin{document}
+
+\title{Spline based mesh generator for wind turbine blades}
+\author{
+  E. Fonn
+  \thanks{\texttt{eivind.fonn@sintef.no}}
+  \thanks{Applied Mathematics, SINTEF ICT, Strindvegen 4, 7034 Trondheim, Norway}
+  \and
+  A. Rasheed \footnotemark[2]
+  \and
+  A. M. Kvarving \footnotemark[2]
+  \and
+  T. Kvamsdal \footnotemark[2]
+}
+
+\pagenumbering{gobble}
+\maketitle
+
+\abstract{
+  Mesh generation involving complex geometries like wind turbines is highly complicated.  The
+  problem is generally addressed using tetrahedral meshes or hybrid meshes involving hexahedral
+  elements close to the wall and tetrahedral elements elsewhere.  The popularity of such mesh
+  generators is attributed to the associated ease of use and automation, though at the cost of
+  numerical accuracy in subsequent analysis.  Also, while using such a mesh one never works with the
+  actual geometry. Since 2005, Isogeometric Analysis---which offers an integration of analysis and
+  CAD geometry through the same basis function, is catching up.  It has been demonstrated that the
+  method offers better accuracy and exact geometric representation during analysis.  Since its
+  inception, the method has been applied to solve problems from the domain of fluid and structural
+  mechanics.  The availability of NURB based surface modelling softwares like Rhinoceros has made it
+  possible to create complex geometries with relative ease but a lack of volumetric mesh generator
+  based on splines proves to be a bottleneck.
+
+  This work presents an automatic block structured spline based mesh generator for wind turbine
+  blades that is being developed to streamline the work flow from CAD modelling to final simulation
+  and analysis.  The blade geometry is defined via cross section wing profiles at various points
+  along the blade axis, which are then interpolated.  These cross sections have a sharp trailing
+  edge, which traditionally forces the use of a ``C-type'' surrounding mesh.  Instead, we modify the
+  profiles slightly to produce a rounded trailing edge, allowing a much more efficient ``O-type''
+  mesh.  The surrounding space is then meshed using a locally orthogonal generalization of
+  transfinite interpolation (TFI).  This is particularly challenging at the tip of the blade, which
+  takes the shape of a strongly distorted hemisphere, forcing the implementation of higher
+  dimensional TFI.
+}
+
+
+\end{document}
